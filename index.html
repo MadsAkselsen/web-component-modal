@@ -18,6 +18,7 @@
 
   <body>
     <ma-modal>
+      <h1>Please Confirm</h1>
       <p>
         With your confirmation you agree that this is a cool modal web component
       </p>
@@ -28,7 +29,9 @@
       const confirmButton = document.querySelector('button');
       const modal = document.querySelector('ma-modal');
       confirmButton.addEventListener('click', () => {
-        modal.setAttribute('opened', '');
+        if (!modal.hasAttribute('opened')) {
+          modal.open(); // the open method is defined inside the modal component
+        }
       });
     </script>
   </body>

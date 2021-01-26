@@ -67,7 +67,7 @@ class Modal extends HTMLElement {
             <div id="backdrop"></div>
             <div id="modal">
                 <header id="header">
-                    <h1>Please Confirm</h1>
+                    <slot></slot>
                 </header>
                 <section id="main">
                     <slot></slot>
@@ -82,7 +82,7 @@ class Modal extends HTMLElement {
     this._modal = this.shadowRoot.getElementById('modal');
   }
 
-  /* This below code changes some CSS when the attribute "opened" is present. But if we only change css we actually dont need to use the attributeChangedCallback. Instead we can just change do this in the css itself */
+  /*! This below code changes some CSS when the attribute "opened" is present. But if we only change css we actually dont need to use the attributeChangedCallback. Instead we can just change do this in the css itself */
   /* attributeChangedCallback(name, oldValue, newValue) {
     if (name === 'opened') {
       this._backdrop.style.opacity = '1';
@@ -95,6 +95,10 @@ class Modal extends HTMLElement {
   static get observedAttributes() {
     return ['opened'];
   } */
+
+  open() {
+    this.setAttribute('opened', '');
+  }
 }
 
 customElements.define('ma-modal', Modal);
