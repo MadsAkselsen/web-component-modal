@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Components</title>
     <script src="modal.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 2rem;
+        font-family: sans-serif;
+      }
+    </style>
   </head>
-  <ma-modal></ma-modal>
+  <ma-modal>
+    <p>
+      With your confirmation you agree that this is a cool modal web component
+    </p>
+  </ma-modal>
+  <p>Please confirm your choice</p>
+  <button>Show Details & Confirm</button>
   <body></body>
 </html>
