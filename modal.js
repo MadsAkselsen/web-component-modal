@@ -12,6 +12,15 @@ class Modal extends HTMLElement {
                     height: 100vh;
                     background: rgba(0,0,0,0.75);
                     z-index: 10;
+                    opacity: 0; /* make invisible */
+                    pointer-events: none; /* click through when invisible */
+                    transition: opacity 0.2s;
+                }
+                /* select backdrop and modal when the "opened" attribute is present */
+                :host([opened]) #backdrop,
+                :host([opened]) #modal {
+                    opacity: 1;
+                    pointer-events:all;
                 }
 
                 #modal {
@@ -26,6 +35,9 @@ class Modal extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.2s;
                 }
 
                 #header {
@@ -66,7 +78,23 @@ class Modal extends HTMLElement {
                 </section>
             </div>
         `;
+    this._backdrop = this.shadowRoot.getElementById('backdrop');
+    this._modal = this.shadowRoot.getElementById('modal');
   }
+
+  /* This below code changes some CSS when the attribute "opened" is present. But if we only change css we actually dont need to use the attributeChangedCallback. Instead we can just change do this in the css itself */
+  /* attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'opened') {
+      this._backdrop.style.opacity = '1';
+      this._backdrop.style.pointerEvents = 'auto';
+      this._modal.style.opacity = '1';
+      this._modal.style.pointerEvents = 'auto';
+    } 
+  }
+
+  static get observedAttributes() {
+    return ['opened'];
+  } */
 }
 
 customElements.define('ma-modal', Modal);

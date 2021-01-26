@@ -15,12 +15,21 @@
       }
     </style>
   </head>
-  <ma-modal>
-    <p>
-      With your confirmation you agree that this is a cool modal web component
-    </p>
-  </ma-modal>
-  <p>Please confirm your choice</p>
-  <button>Show Details & Confirm</button>
-  <body></body>
+
+  <body>
+    <ma-modal>
+      <p>
+        With your confirmation you agree that this is a cool modal web component
+      </p>
+    </ma-modal>
+    <p>Please confirm your choice</p>
+    <button>Show Details & Confirm</button>
+    <script>
+      const confirmButton = document.querySelector('button');
+      const modal = document.querySelector('ma-modal');
+      confirmButton.addEventListener('click', () => {
+        modal.setAttribute('opened', '');
+      });
+    </script>
+  </body>
 </html>
