@@ -28,6 +28,15 @@
     <script>
       const confirmButton = document.querySelector('button');
       const modal = document.querySelector('ma-modal');
+
+      modal.addEventListener('confirm', (event) => {
+        console.log('Confirmed...');
+      });
+
+      modal.addEventListener('cancel', (event) => {
+        console.log('Cancelled...');
+      });
+
       confirmButton.addEventListener('click', () => {
         if (!modal.hasAttribute('opened')) {
           modal.open(); // the open method is defined inside the modal component
