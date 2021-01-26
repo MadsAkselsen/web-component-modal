@@ -44,6 +44,12 @@ class Modal extends HTMLElement {
                     padding: 1rem;
                 }
 
+                /* this is how we target the h1 if users pass h1 into the slot */
+                ::slotted(h1) {
+                    font-size: 1.25rem;
+                }
+
+                /* this is how we target the h1 in the shadowdom if no h1 is passed into the slot from the lightdom */
                 header h1 {
                     font-size: 1.25rem;
                 }
@@ -67,10 +73,10 @@ class Modal extends HTMLElement {
             <div id="backdrop"></div>
             <div id="modal">
                 <header id="header">
-                    <slot></slot>
+                    <slot name="title"><h1>Default Title</h1></slot>
                 </header>
                 <section id="main">
-                    <slot></slot>
+                    <slot name="body">This is a default text. You can add custom content in the html slot with name="body"</slot>
                 </section>
                 <section id="actions">
                     <button>Cancel</button>
